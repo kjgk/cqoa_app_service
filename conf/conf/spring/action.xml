@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="busiGateAction" class="cn.net.withub.busiGate.action.BusiGateAction" scope="prototype">
+		<property name="busiGateServiceHandle" ref="busiGateServiceHandle" />
+		<property name="secQueryService" ref="secService" />
+		<property name="validataRequestService" ref="normalValidataRequestService" />
+	</bean>
+
+    <bean id="downLoadAction" class="cn.net.withub.busiGate.action.DownLoadAction" scope="prototype">
+
+    </bean>
+
+</beans>

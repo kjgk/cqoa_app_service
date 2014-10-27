@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="basePackage" extends="struts-default">
+		<result-types>
+			<result-type name="dispatcher"
+				class="org.apache.struts2.dispatcher.ServletDispatcherResult">
+			</result-type>
+		</result-types>
+		<interceptors>
+			<interceptor-stack name="baseStack">
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="baseStack" />
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="exception" />
+		</global-exception-mappings>
+	</package>
+
+	<package name="busiGate" extends="basePackage" namespace="/">
+
+        <action name="*" class="busiGateAction" method="{1}">
+        </action>
+
+		<action name="down" class="downLoadAction" method="send">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="inputName">downloadFile</param>
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+    	</action>
+    	
+    	<action name="downNew" class="downLoadAction" >
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="inputName">downloadFile</param>
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+    	</action>
+	</package>
+	
+		
+	<include file="struts-default.xml" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.action.extension" value="shtml" />
+</struts>

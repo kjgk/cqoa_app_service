@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- 通用业务处理Service -->
+	<bean id="busiGateServiceHandle" class="cn.net.withub.busiGate.service.BusiGateServiceHandle">
+		<property name="loginAuthService" ref="loginAuthService"/>
+	</bean>
+	
+	<!-- 登录权限Service -->
+	<bean id="loginAuthService" class="cn.net.withub.busiGate.service.impl.LoginAuthServiceImpl">
+		<property name="jdbcTool" ref="jdbcTool"/>
+	</bean>
+	
+	<!-- 密钥管理类 -->
+	<bean id="secService" class="cn.net.withub.busiGate.service.impl.SecServiceImpl">
+		<property name="jdbcTool" ref="jdbcTool"/>
+	</bean>
+	
+	<!-- 密钥管理类 -->
+	<bean id="normalValidataRequestService" class="cn.net.withub.busiGate.service.impl.NormalValidataRequestService">
+	</bean>
+	
+	<bean id="req_versionMgr_service" class="cn.net.withub.busiGate.service.impl.VersionMgrServiceImpl">
+		<property name="jdbcTool" ref="jdbcTool"/>
+	</bean>
+	
+	<bean id="req_secMgr_service" class="cn.net.withub.busiGate.service.impl.SecMgrServiceImpl">
+		<property name="jdbcTool" ref="jdbcTool"/>
+	</bean>
+</beans>
