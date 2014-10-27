@@ -2,8 +2,12 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<bean id="req_login_service" class="cn.net.withub.busiGate.ezy.service.imp.LoginServiceImp">
+    <bean id="req_login_service" class="cn.net.withub.busiGate.ezy.service.imp.LoginServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
-	</bean>
+    </bean>
+
+    <bean id="req_taskpending_service" class="cn.net.withub.busiGate.ezy.service.imp.TaskPendingServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
 	
 </beans>

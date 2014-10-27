@@ -24,17 +24,16 @@ public class LoginServiceImp implements BusiGateService {
         Map<String, String> resultMap = new HashMap<String, String>();
         User user = new User();
         try {
-            List list = jdbcTool.queryForList("select a.name username, b.name account, b.salt, b.password" +
-                    " from sys_user a, sys_account b where a.objectid = b.userid and b.name = ? "
+            List list = jdbcTool.queryForList("select a.objectId objectId, a.name username, b.name account, b.salt, b.password" +
+                    " from sys_user a, sys_account b where a.objectId = b.userId and b.name = ? "
                     , new Object[]{arg0.get("account")});
 
             String message = "0";
             if (!CollectionUtils.isEmpty(list)) {
                 Map item = (Map) list.get(0);
-
                 String passwordMD5 = Md5Util.getStringMD5(item.get("salt") + arg0.get("password"));
-
                 if (passwordMD5.equalsIgnoreCase((String) item.get("password"))) {
+                    user.setUserId((String) item.get("objectId"));
                     user.setUsername((String) item.get("username"));
                     user.setLoginName((String) item.get("account"));
                     message = "1";
@@ -46,10 +45,6 @@ public class LoginServiceImp implements BusiGateService {
             throw new AppException(EzyErrorCode.EZY_LOGIN_ERROR, "µÇÂ½Ê§°Ü");
         }
         return resultMap;
-    }
-
-    public JdbcTool getJdbcTool() {
-        return jdbcTool;
     }
 
     public void setJdbcTool(JdbcTool jdbcTool) {
