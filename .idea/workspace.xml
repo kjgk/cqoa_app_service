@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fbd9114-e850-4b7c-8316-e7e13a32a6d7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cn/net/withub/busiGate/ezy/service/imp/TaskPendingServiceImp.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cn/net/withub/busiGate/ezy/service/TaskpPendingServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/net/withub/busiGate/ezy/exceptin/EzyErrorCode.java" afterPath="$PROJECT_DIR$/src/cn/net/withub/busiGate/ezy/exceptin/EzyErrorCode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/net/withub/busiGate/ezy/service/imp/LoginServiceImp.java" afterPath="$PROJECT_DIR$/src/cn/net/withub/busiGate/ezy/service/imp/LoginServiceImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/conf/spring/service-ezy.xml" afterPath="$PROJECT_DIR$/conf/conf/spring/service-ezy.xml" />
+    <list id="5fbd9114-e850-4b7c-8316-e7e13a32a6d7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
+    <list default="true" id="6f1bef50-44d1-40d9-bc65-b134d03dad5b" name="New changelist" comment="" />
     <ignored path="ezyapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1009,10 +1005,11 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5fbd9114-e850-4b7c-8316-e7e13a32a6d7" name="Default" comment="" />
+      <changelist id="6f1bef50-44d1-40d9-bc65-b134d03dad5b" name="New changelist" comment="" />
       <created>1413767591485</created>
       <updated>1413767591485</updated>
       <workItem from="1413767597448" duration="583000" />
-      <workItem from="1414378162101" duration="18547000" />
+      <workItem from="1414378162101" duration="18566000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1414394453594</created>
@@ -1026,11 +1023,15 @@
       <created>1414394640016</created>
       <updated>1414394640016</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="first commit">
+      <created>1414399669736</created>
+      <updated>1414399669736</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19130000" />
+    <option name="totallyTimeSpent" value="19149000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
