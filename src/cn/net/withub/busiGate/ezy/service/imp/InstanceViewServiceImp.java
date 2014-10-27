@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 查看流程信息信息
+ * 查看流程信息
  */
 public class InstanceViewServiceImp implements BusiGateService {
 
