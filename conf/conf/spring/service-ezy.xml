@@ -9,5 +9,9 @@
     <bean id="req_taskpending_service" class="cn.net.withub.busiGate.ezy.service.imp.TaskPendingServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
-	
+
+    <bean id="req_instanceview_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceViewServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
 </beans>

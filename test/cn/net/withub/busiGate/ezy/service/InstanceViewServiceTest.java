@@ -10,23 +10,22 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TaskpPendingServiceTest extends BaseJunit4Test {
+public class InstanceViewServiceTest extends BaseJunit4Test {
 
-    @Resource(name = "req_taskpending_service")
-    private BusiGateService taskPendingService;
+    @Resource(name = "req_instanceview_service")
+    private BusiGateService instanceViewService;
 
     @Test
     public void testLogin() {
 
         Map params = new HashMap();
-        params.put("currentPage", "1");
-        params.put("pageSize", "5");
+        params.put("objectId", "0815A172-05F3-4875-9348-D80403A50733");
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
-            Map result = taskPendingService.busi(params, loginInfo);
+            Map result = instanceViewService.busi(params, loginInfo);
 
-            Assert.assertNotNull(result.get("total"));
+            Assert.assertNotNull(result.get("result"));
 
         } catch (AppException e) {
             e.printStackTrace();
