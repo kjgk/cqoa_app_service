@@ -18,7 +18,7 @@ public class LoginTest extends BaseJunit4Test {
     public void testLogin() {
 
         Map params = new HashMap();
-        params.put("account", "gyb");
+        params.put("username", "gyb");
         params.put("password", "123456");
         try {
             Map result = loginService.busi(params, null);

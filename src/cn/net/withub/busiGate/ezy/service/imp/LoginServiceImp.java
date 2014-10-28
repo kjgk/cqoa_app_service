@@ -26,7 +26,7 @@ public class LoginServiceImp implements BusiGateService {
         try {
             List list = jdbcTool.queryForList("select a.objectId objectId, a.name username, b.name account, b.salt, b.password" +
                     " from sys_user a, sys_account b where a.objectId = b.userId and b.name = ? "
-                    , new Object[]{arg0.get("account")});
+                    , new Object[]{arg0.get("username")});
 
             String message = "0";
             if (!CollectionUtils.isEmpty(list)) {
