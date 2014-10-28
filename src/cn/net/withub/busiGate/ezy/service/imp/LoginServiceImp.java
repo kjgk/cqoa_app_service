@@ -42,7 +42,7 @@ public class LoginServiceImp implements BusiGateService {
             resultMap.put("message", message);
             resultMap.put("userInfo", JSONSerializer.toJSON(user).toString());
         } catch (Exception e1) {
-            throw new AppException(EzyErrorCode.EZY_LOGIN_ERROR, "µÇÂ½Ê§°Ü");
+            throw new AppException(EzyErrorCode.EZY_LOGIN_ERROR, "µÇÂ¼Ê§°Ü");
         }
         return resultMap;
     }
