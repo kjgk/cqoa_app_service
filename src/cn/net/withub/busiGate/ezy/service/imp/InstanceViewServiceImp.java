@@ -7,7 +7,6 @@ import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import net.sf.json.JSONSerializer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +23,27 @@ public class InstanceViewServiceImp implements BusiGateService {
 
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
-
-            List list = jdbcTool.queryForList("select * from wf_instance a where objectId = ?"
+            List<Map<String, Object>> list = jdbcTool.queryForList("select a.name, f.name flowNodeName, b.name flowTypeName, c.name creator, d.name organization" +
+                    " , a.createTime createTime, a.finishTime finishTime, e.name statusName" +
+                    " from wf_instance a, wf_flowtype b, sys_user c, sys_organization d, sys_code e, wf_flownode f" +
+                    " where a.objectId = ?" +
+                    " and a.flowTypeId = b.objectId and a.creator = c.objectId and a.organizationId = d.objectId and a.status = e.objectId and a.currentFlowNodeId = f.objectId"
                     , new Object[]{arg0.get("objectId")});
 
-            returnMap.put("result", JSONSerializer.toJSON(list.get(0)).toString());
+            Map result = list.get(0);
+
+            if (result.get("finishTime") == null) {
+                // todo
+                result.put("flowNodeName", null);
+                result.put("handler", null);
+            } else {
+                result.put("flowNodeName", null);
+                result.put("handler", null);
+            }
+
+            returnMap.put("result", JSONSerializer.toJSON(result).toString());
         } catch (Exception e1) {
+            e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
         }
         return returnMap;
