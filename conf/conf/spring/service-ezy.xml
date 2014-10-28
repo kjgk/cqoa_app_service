@@ -14,4 +14,24 @@
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
+    <bean id="req_miscellaneousview_service" class="cn.net.withub.busiGate.ezy.service.imp.MiscellaneousViewServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_trainingview_service" class="cn.net.withub.busiGate.ezy.service.imp.TrainingViewServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_leaveview_service" class="cn.net.withub.busiGate.ezy.service.imp.LeaveViewServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_outgoingview_service" class="cn.net.withub.busiGate.ezy.service.imp.OutgoingViewServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_caruseview_service" class="cn.net.withub.busiGate.ezy.service.imp.CarUseViewServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
 </beans>
