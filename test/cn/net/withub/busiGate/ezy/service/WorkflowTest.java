@@ -18,6 +18,9 @@ public class WorkflowTest extends BaseJunit4Test {
     @Resource(name = "req_taskpending_service")
     private BusiGateService taskPendingService;
 
+    @Resource(name = "req_instancetasklog_service")
+    private BusiGateService instanceTaskLogService;
+
     @Test
     public void testInstanceView() {
 
@@ -49,6 +52,24 @@ public class WorkflowTest extends BaseJunit4Test {
             Map result = taskPendingService.busi(params, loginInfo);
 
             Assert.assertNotNull(result.get("count"));
+
+        } catch (AppException e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testInstanceTaskLog() {
+
+        Map params = new HashMap();
+        params.put("instanceId", "0815A172-05F3-4875-9348-D80403A50733");
+        User loginInfo = new User();
+        loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
+        try {
+            Map result = instanceTaskLogService.busi(params, loginInfo);
+
+            Assert.assertNotNull(result.get("resultMap"));
 
         } catch (AppException e) {
             e.printStackTrace();
