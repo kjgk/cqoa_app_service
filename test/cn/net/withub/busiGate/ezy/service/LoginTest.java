@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginServiceTest extends BaseJunit4Test {
+public class LoginTest extends BaseJunit4Test {
 
     @Resource(name = "req_login_service")
     private BusiGateService loginService;

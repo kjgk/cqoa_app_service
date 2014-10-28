@@ -10,13 +10,35 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TaskpPendingServiceTest extends BaseJunit4Test {
+public class WorkflowTest extends BaseJunit4Test {
+
+    @Resource(name = "req_instanceview_service")
+    private BusiGateService instanceViewService;
 
     @Resource(name = "req_taskpending_service")
     private BusiGateService taskPendingService;
 
     @Test
-    public void testLogin() {
+    public void testInstanceView() {
+
+        Map params = new HashMap();
+        params.put("objectId", "0815A172-05F3-4875-9348-D80403A50733");
+        User loginInfo = new User();
+        loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
+        try {
+            Map result = instanceViewService.busi(params, loginInfo);
+
+            Assert.assertNotNull(result.get("result"));
+
+        } catch (AppException e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        }
+    }
+
+
+    @Test
+    public void testTaskPending() {
 
         Map params = new HashMap();
         params.put("currentPage", "1");
@@ -26,12 +48,13 @@ public class TaskpPendingServiceTest extends BaseJunit4Test {
         try {
             Map result = taskPendingService.busi(params, loginInfo);
 
-            Assert.assertNotNull(result.get("total"));
+            Assert.assertNotNull(result.get("count"));
 
         } catch (AppException e) {
             e.printStackTrace();
             Assert.fail(e.getMessage());
         }
     }
+
 
 }
