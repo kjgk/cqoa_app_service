@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * 用户列表
  */
-public class AServiceImp implements BusiGateService {
+public class UserListServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 
