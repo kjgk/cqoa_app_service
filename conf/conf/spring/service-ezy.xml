@@ -34,4 +34,12 @@
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
+    <bean id="req_instancetasklog_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceTaskLogServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_committask_service" class="cn.net.withub.busiGate.ezy.service.imp.CommitTaskServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
 </beans>

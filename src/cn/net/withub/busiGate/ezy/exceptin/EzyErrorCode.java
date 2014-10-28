@@ -10,5 +10,11 @@ public class EzyErrorCode {
      * ²éÑ¯
      */
     public static final String EZY_QUERY_ERROR = "EZ0002";
+
+    /**
+     * ²Ù×÷
+     */
+    public static final String EZY_PROCESS_ERROR = "EZ0003";
+
 	
 }
