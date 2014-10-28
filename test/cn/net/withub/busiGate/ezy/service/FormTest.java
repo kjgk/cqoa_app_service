@@ -94,7 +94,7 @@ public class FormTest extends BaseJunit4Test {
     }
 
     @Test
-    public void outgoingLeaveView() {
+    public void outgoingView() {
 
         Map params = new HashMap();
         params.put("objectId", "1B66A231-F24C-4536-AFDB-CD8511EF43A8");
@@ -116,7 +116,7 @@ public class FormTest extends BaseJunit4Test {
     }
 
     @Test
-    public void carUseLeaveView() {
+    public void carUseView() {
 
         Map params = new HashMap();
         params.put("objectId", "46ADED4A-6A15-4235-8267-CEBEFE4E5D46");
