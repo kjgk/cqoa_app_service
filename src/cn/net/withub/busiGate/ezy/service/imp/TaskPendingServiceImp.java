@@ -26,11 +26,15 @@ public class TaskPendingServiceImp implements BusiGateService {
         try {
             Integer currentPage = Integer.parseInt(arg0.get("currentPage"));
             Integer pageSize = Integer.parseInt(arg0.get("pageSize"));
-            currentPage = currentPage < 0 ? 1: currentPage;
+            currentPage = currentPage < 0 ? 1 : currentPage;
 
             String sql = "from vw_taskinfo a where handler = ?";
 
-            List list = jdbcTool.queryForList("select * " + sql + " order by taskCreateTime desc limit ?, ?"
+            List list = jdbcTool.queryForList("select a.objectId objectId, a.instanceName instanceName " +
+                    ", a.flowTypeName flowTypeName, a.flowNodeName flowNodeName, a.taskStatusName taskStatusName " +
+                    ", a.taskStatus taskStatus, a.organizationName organizationName, a.creatorName creatorName " +
+                    ", a.taskArriveTime taskArriveTime, a.taskFinishTime taskFinishTime " +
+                    sql + " order by taskCreateTime desc limit ?, ?"
                     , new Object[]{arg1.getUserId(), (currentPage - 1) * pageSize, pageSize});
             Long count = jdbcTool.queryForLong("select count(1) " + sql, new Object[]{arg1.getUserId()});
 
