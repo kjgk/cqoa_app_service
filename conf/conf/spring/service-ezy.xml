@@ -54,5 +54,20 @@
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
+    <bean id="req_submitoutgoing_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitOutgoingServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_submitleave_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitLeaveServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_submittraining_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitTrainingServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_submitcaruse_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitCarUseServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
 
 </beans>
