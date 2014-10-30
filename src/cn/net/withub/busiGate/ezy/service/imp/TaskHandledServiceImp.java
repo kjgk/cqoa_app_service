@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 查询待办事项
+ * 查询已办事项
  */
-public class TaskPendingServiceImp implements BusiGateService {
+public class TaskHandledServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 
@@ -30,7 +30,7 @@ public class TaskPendingServiceImp implements BusiGateService {
             String flowType = arg0.get("flowType");
 
             String sql = "from vw_taskinfo a, wf_flowtype b" +
-                    " where a.flowTypeId = b.objectId and a.taskStatusTag = 'Running' and a.handler = ? and a.flowNodeType <> 'First' and b.flowTypeTag = ? ";
+                    " where a.flowTypeId = b.objectId and a.taskStatusTag = 'Finish' and a.handler = ? and a.flowNodeType <> 'First' and b.flowTypeTag = ? ";
 
             List list = jdbcTool.queryForList("select a.objectId objectId, a.instanceName instanceName " +
                     ", a.flowTypeName flowTypeName, a.flowNodeName flowNodeName, a.taskStatusName taskStatusName " +
