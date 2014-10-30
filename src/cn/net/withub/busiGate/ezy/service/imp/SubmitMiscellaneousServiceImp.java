@@ -5,19 +5,18 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
+import com.withub.model.oa.po.Miscellaneous;
+import com.withub.model.system.po.User;
 import com.withub.server.OAServer;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
- * 处理任务
+ * 提交综合事项
  */
-public class CommitTaskServiceImp implements BusiGateService {
+public class SubmitMiscellaneousServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 
@@ -30,17 +29,13 @@ public class CommitTaskServiceImp implements BusiGateService {
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
 
-            String taskId = arg0.get("taskId");
-            String opinion = arg0.get("opinion");
-            String handleResult = arg0.get("handleResult");
-            String approvers = arg0.get("approvers");
-            List<String> approverList = new ArrayList<String>();
-            if (StringUtils.isNotEmpty(approvers)) {
-                for (String approver : approvers.split(",")) {
-                    approverList.add(approver);
-                }
-            }
-            oaServer.commitTask(arg1.getUserId(), taskId, handleResult, opinion, approverList);
+            String description = arg0.get("description");
+            Miscellaneous miscellaneous = new Miscellaneous();
+            miscellaneous.setDescription(description);
+            miscellaneous.setCurrentUser(new User());
+            miscellaneous.getCurrentUser().setObjectId(arg1.getUserId());
+
+            oaServer.submitMiscellaneous(miscellaneous);
 
             returnMap.put("message", "1");
         } catch (Exception e1) {

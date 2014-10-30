@@ -24,6 +24,9 @@ public class WorkflowTest extends BaseJunit4Test {
     @Resource(name = "req_committask_service")
     private BusiGateService commitTaskService;
 
+    @Resource(name = "req_submitmiscellaneous_service")
+    private BusiGateService submitMiscellaneousService;
+
     @Test
     public void testInstanceView() {
 
@@ -92,6 +95,26 @@ public class WorkflowTest extends BaseJunit4Test {
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
             Map result = commitTaskService.busi(params, loginInfo);
+
+            String message = (String) result.get("message");
+
+            Assert.assertEquals(message, "1");
+
+        } catch (AppException e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testSubmitMiscellaneous() {
+
+        Map params = new HashMap();
+        params.put("description", "Íþ·çÍþ·ç");
+        User loginInfo = new User();
+        loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
+        try {
+            Map result = submitMiscellaneousService.busi(params, loginInfo);
 
             String message = (String) result.get("message");
 

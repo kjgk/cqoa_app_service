@@ -47,4 +47,9 @@
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
+    <bean id="req_submitmiscellaneous_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitMiscellaneousServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+
 </beans>
