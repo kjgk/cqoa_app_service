@@ -27,6 +27,9 @@ public class FormTest extends BaseJunit4Test {
     @Resource(name = "req_caruseview_service")
     private BusiGateService carUseViewService;
 
+    @Resource(name = "req_appversion_service")
+    private BusiGateService appVersionService;
+
     @Test
     public void testMiscellaneousView() {
 
@@ -124,6 +127,24 @@ public class FormTest extends BaseJunit4Test {
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
             Map result = carUseViewService.busi(params, loginInfo);
+
+            System.out.println("===================================================");
+            System.out.println(result.toString());
+            System.out.println("===================================================");
+
+            Assert.assertNotNull(result.get("result"));
+
+        } catch (AppException e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void appVersion() {
+
+        try {
+            Map result = appVersionService.busi(null, null);
 
             System.out.println("===================================================");
             System.out.println(result.toString());
