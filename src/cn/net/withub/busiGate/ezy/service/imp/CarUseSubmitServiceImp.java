@@ -6,7 +6,7 @@ import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.withub.common.util.DateUtil;
-import com.withub.model.oa.po.Outgoing;
+import com.withub.model.oa.po.CarUse;
 import com.withub.model.system.po.User;
 import com.withub.server.OAServer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * 提交综合事项
  */
-public class SubmitOutgoingServiceImp implements BusiGateService {
+public class CarUseSubmitServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 
@@ -30,30 +30,24 @@ public class SubmitOutgoingServiceImp implements BusiGateService {
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
 
-            String beginDate = arg0.get("beginDate");
-            String endDate = arg0.get("endDate");
+            String beginTime = arg0.get("beginTime");
+            String endTime = arg0.get("endTime");
             String localCity = arg0.get("localCity");
             String description = arg0.get("description");
-            String destination = arg0.get("destination");
-            String driveRoute = arg0.get("driveRoute");
-            String transportation = arg0.get("transportation");
-            String requiredCar = arg0.get("requiredCar");
+            String address = arg0.get("address");
 
-            Outgoing outgoing = new Outgoing();
+            CarUse carUse = new CarUse();
 
-            outgoing.setBeginDate(DateUtil.convertStringToDate(beginDate, DateUtil.STANDARD_DATE_FORMAT));    // yyyy-MM-dd
-            outgoing.setEndDate(DateUtil.convertStringToDate(endDate, DateUtil.STANDARD_DATE_FORMAT));
-            outgoing.setLocalCity(Integer.parseInt(localCity));
-            outgoing.setDescription(description);
-            outgoing.setDestination(destination);
-            outgoing.setDriveRoute(driveRoute);
-            outgoing.setTransportation(transportation);
-            outgoing.setRequiredCar(Integer.parseInt(requiredCar));
+            carUse.setBeginTime(DateUtil.convertStringToDate(beginTime, DateUtil.STANDARD_DATEMINUTE_FORMAT));    // yyyy-MM-dd HH:mm
+            carUse.setEndTime(DateUtil.convertStringToDate(endTime, DateUtil.STANDARD_DATEMINUTE_FORMAT));
+            carUse.setLocalCity(Integer.parseInt(localCity));
+            carUse.setDescription(description);
+            carUse.setAddress(address);
 
-            outgoing.setCurrentUser(new User());
-            outgoing.getCurrentUser().setObjectId(arg1.getUserId());
+            carUse.setCurrentUser(new User());
+            carUse.getCurrentUser().setObjectId(arg1.getUserId());
 
-            oaServer.submitOutgoing(outgoing);
+            oaServer.submitCarUse(carUse);
 
             returnMap.put("message", "1");
         } catch (Exception e1) {

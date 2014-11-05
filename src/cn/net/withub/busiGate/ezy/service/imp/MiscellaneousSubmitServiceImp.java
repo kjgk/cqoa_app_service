@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * 提交综合事项
  */
-public class SubmitMiscellaneousServiceImp implements BusiGateService {
+public class MiscellaneousSubmitServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 

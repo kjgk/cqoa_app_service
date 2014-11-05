@@ -6,7 +6,7 @@ import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.withub.common.util.DateUtil;
-import com.withub.model.oa.po.Leave;
+import com.withub.model.oa.po.Outgoing;
 import com.withub.model.system.po.User;
 import com.withub.server.OAServer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * 提交综合事项
  */
-public class SubmitLeaveServiceImp implements BusiGateService {
+public class OutgoingSubmitServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 
@@ -34,18 +34,26 @@ public class SubmitLeaveServiceImp implements BusiGateService {
             String endDate = arg0.get("endDate");
             String localCity = arg0.get("localCity");
             String description = arg0.get("description");
+            String destination = arg0.get("destination");
+            String driveRoute = arg0.get("driveRoute");
+            String transportation = arg0.get("transportation");
+            String requiredCar = arg0.get("requiredCar");
 
-            Leave leave = new Leave();
+            Outgoing outgoing = new Outgoing();
 
-            leave.setBeginDate(DateUtil.convertStringToDate(beginDate, DateUtil.STANDARD_DATE_FORMAT));    // yyyy-MM-dd
-            leave.setEndDate(DateUtil.convertStringToDate(endDate, DateUtil.STANDARD_DATE_FORMAT));
-            leave.setLocalCity(Integer.parseInt(localCity));
-            leave.setDescription(description);
+            outgoing.setBeginDate(DateUtil.convertStringToDate(beginDate, DateUtil.STANDARD_DATE_FORMAT));    // yyyy-MM-dd
+            outgoing.setEndDate(DateUtil.convertStringToDate(endDate, DateUtil.STANDARD_DATE_FORMAT));
+            outgoing.setLocalCity(Integer.parseInt(localCity));
+            outgoing.setDescription(description);
+            outgoing.setDestination(destination);
+            outgoing.setDriveRoute(driveRoute);
+            outgoing.setTransportation(transportation);
+            outgoing.setRequiredCar(Integer.parseInt(requiredCar));
 
-            leave.setCurrentUser(new User());
-            leave.getCurrentUser().setObjectId(arg1.getUserId());
+            outgoing.setCurrentUser(new User());
+            outgoing.getCurrentUser().setObjectId(arg1.getUserId());
 
-            oaServer.submitLeave(leave);
+            oaServer.submitOutgoing(outgoing);
 
             returnMap.put("message", "1");
         } catch (Exception e1) {

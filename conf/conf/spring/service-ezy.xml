@@ -50,23 +50,23 @@
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
-    <bean id="req_submitmiscellaneous_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitMiscellaneousServiceImp">
+    <bean id="req_miscellaneoussubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.MiscellaneousSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
-    <bean id="req_submitoutgoing_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitOutgoingServiceImp">
+    <bean id="req_outgoingsubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.OutgoingSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
-    <bean id="req_submitleave_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitLeaveServiceImp">
+    <bean id="req_leavesubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.LeaveSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
-    <bean id="req_submittraining_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitTrainingServiceImp">
+    <bean id="req_trainingsubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.TrainingSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
-    <bean id="req_submitcaruse_service" class="cn.net.withub.busiGate.ezy.service.imp.SubmitCarUseServiceImp">
+    <bean id="req_carusesubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.CarUseSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 

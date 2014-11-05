@@ -3,6 +3,7 @@ package cn.net.withub.busiGate.ezy.service.imp;
 import cn.net.withub.busiGate.ezy.exceptin.EzyErrorCode;
 import cn.net.withub.busiGate.ezy.model.User;
 import cn.net.withub.busiGate.ezy.util.Md5Util;
+import cn.net.withub.busiGate.loginInfo.LoginHelper;
 import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
@@ -37,11 +38,14 @@ public class LoginServiceImp implements BusiGateService {
                     user.setUsername((String) item.get("username"));
                     user.setLoginName((String) item.get("account"));
                     message = "1";
+                    String ticket = LoginHelper.login(user);
+                    resultMap.put("ticket", ticket);
                 }
             }
             resultMap.put("message", message);
             resultMap.put("userInfo", JSONSerializer.toJSON(user).toString());
         } catch (Exception e1) {
+            e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_LOGIN_ERROR, "µÇÂ¼Ê§°Ü");
         }
         return resultMap;
