@@ -27,20 +27,20 @@ public class WorkflowTest extends BaseJunit4Test {
     @Resource(name = "req_committask_service")
     private BusiGateService commitTaskService;
 
-    @Resource(name = "req_submitmiscellaneous_service")
-    private BusiGateService submitMiscellaneousService;
+    @Resource(name = "req_miscellaneoussubmit_service")
+    private BusiGateService miscellaneousSubmitService;
 
-    @Resource(name = "req_submitoutgoing_service")
-    private BusiGateService submitOutgoingService;
+    @Resource(name = "req_outgoingsubmit_service")
+    private BusiGateService outgoingSubmitService;
 
-    @Resource(name = "req_submitleave_service")
-    private BusiGateService submitLeaveService;
+    @Resource(name = "req_leavesubmit_service")
+    private BusiGateService leaveSubmitService;
 
-    @Resource(name = "req_submittraining_service")
-    private BusiGateService submitTrainingService;
+    @Resource(name = "req_trainingsubmit_service")
+    private BusiGateService trainingSubmitService;
 
-    @Resource(name = "req_submitcaruse_service")
-    private BusiGateService submitCarUseService;
+    @Resource(name = "req_carusesubmit_service")
+    private BusiGateService carUseSubmitService;
 
     @Test
     public void testInstanceView() {
@@ -149,7 +149,7 @@ public class WorkflowTest extends BaseJunit4Test {
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
-            Map result = submitMiscellaneousService.busi(params, loginInfo);
+            Map result = miscellaneousSubmitService.busi(params, loginInfo);
 
             String message = (String) result.get("message");
 
@@ -178,7 +178,7 @@ public class WorkflowTest extends BaseJunit4Test {
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
-            Map result = submitOutgoingService.busi(params, loginInfo);
+            Map result = outgoingSubmitService.busi(params, loginInfo);
 
             String message = (String) result.get("message");
 
@@ -203,7 +203,7 @@ public class WorkflowTest extends BaseJunit4Test {
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
-            Map result = submitLeaveService.busi(params, loginInfo);
+            Map result = leaveSubmitService.busi(params, loginInfo);
 
             String message = (String) result.get("message");
 
@@ -231,7 +231,7 @@ public class WorkflowTest extends BaseJunit4Test {
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
-            Map result = submitTrainingService.busi(params, loginInfo);
+            Map result = trainingSubmitService.busi(params, loginInfo);
 
             String message = (String) result.get("message");
 
@@ -257,7 +257,7 @@ public class WorkflowTest extends BaseJunit4Test {
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
-            Map result = submitCarUseService.busi(params, loginInfo);
+            Map result = carUseSubmitService.busi(params, loginInfo);
 
             String message = (String) result.get("message");
 
