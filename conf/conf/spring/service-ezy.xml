@@ -71,4 +71,7 @@
         <property name="oaServer" ref="oaServer"/>
     </bean>
 
+    <bean id="req_appversion_service" class="cn.net.withub.busiGate.ezy.service.imp.AppVersionServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
 </beans>
