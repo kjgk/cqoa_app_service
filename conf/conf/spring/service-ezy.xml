@@ -68,6 +68,7 @@
 
     <bean id="req_carusesubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.CarUseSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
 </beans>

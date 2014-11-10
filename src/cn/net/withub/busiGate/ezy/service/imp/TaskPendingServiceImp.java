@@ -45,7 +45,7 @@ public class TaskPendingServiceImp implements BusiGateService {
                 items.add(map);
             }
             returnMap.put("count", count.toString());
-            returnMap.put("resultMap", JSONSerializer.toJSON(items).toString());
+            returnMap.put("result", JSONSerializer.toJSON(items).toString());
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");

@@ -9,7 +9,6 @@ import com.withub.common.util.DateUtil;
 import com.withub.model.oa.po.CarUse;
 import com.withub.model.system.po.User;
 import com.withub.server.OAServer;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +20,6 @@ public class CarUseSubmitServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 
-    @Autowired
     private OAServer oaServer;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
@@ -59,5 +57,9 @@ public class CarUseSubmitServiceImp implements BusiGateService {
 
     public void setJdbcTool(JdbcTool jdbcTool) {
         this.jdbcTool = jdbcTool;
+    }
+
+    public void setOaServer(OAServer oaServer) {
+        this.oaServer = oaServer;
     }
 }
