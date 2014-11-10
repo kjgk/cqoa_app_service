@@ -48,4 +48,8 @@ public class MiscellaneousSubmitServiceImp implements BusiGateService {
     public void setJdbcTool(JdbcTool jdbcTool) {
         this.jdbcTool = jdbcTool;
     }
+
+    public void setOaServer(OAServer oaServer) {
+        this.oaServer = oaServer;
+    }
 }

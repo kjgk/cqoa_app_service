@@ -52,18 +52,22 @@
 
     <bean id="req_miscellaneoussubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.MiscellaneousSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_outgoingsubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.OutgoingSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_leavesubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.LeaveSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_trainingsubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.TrainingSubmitServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_carusesubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.CarUseSubmitServiceImp">
@@ -73,5 +77,6 @@
 
     <bean id="req_appversion_service" class="cn.net.withub.busiGate.ezy.service.imp.AppVersionServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 </beans>
