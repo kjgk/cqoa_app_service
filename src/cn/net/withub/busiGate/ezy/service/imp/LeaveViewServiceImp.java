@@ -25,7 +25,7 @@ public class LeaveViewServiceImp implements BusiGateService {
             List<Map<String, Object>> list = jdbcTool.queryForList(
                   "SELECT sys_user.name AS proposerName, sys_organization.name AS organizationName,\n" +
                           "oa_leave.CREATETIME AS createTime, oa_leave.BEGINDATE AS beginDate,\n" +
-                          "oa_leave.ENDDATE AS endDate, oa_leave.LOCALCITY as localCity,\n" +
+                          "oa_leave.ENDDATE AS endDate,\n" +
                           "oa_leave.DESCRIPTION as description\n" +
                           "FROM oa_leave, sys_user, sys_organization\n" +
                           "WHERE 1=1\n" +

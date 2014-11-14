@@ -48,6 +48,12 @@
 
     <bean id="req_committask_service" class="cn.net.withub.busiGate.ezy.service.imp.CommitTaskServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
+    </bean>
+
+    <bean id="req_flownodeget_service" class="cn.net.withub.busiGate.ezy.service.imp.FlowNodeGetServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_miscellaneoussubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.MiscellaneousSubmitServiceImp">

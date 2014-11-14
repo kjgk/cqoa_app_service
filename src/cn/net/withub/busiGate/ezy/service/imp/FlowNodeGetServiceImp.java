@@ -5,19 +5,18 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
+import com.withub.model.workflow.vo.TaskFlowNodeInfo;
 import com.withub.server.OAServer;
-import org.apache.commons.lang.StringUtils;
+import net.sf.json.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
- * 处理任务
+ * 获取任务节点的审批信息
  */
-public class CommitTaskServiceImp implements BusiGateService {
+public class FlowNodeGetServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 
@@ -29,20 +28,9 @@ public class CommitTaskServiceImp implements BusiGateService {
 
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
-
             String taskId = arg0.get("taskId");
-            String opinion = arg0.get("opinion");
-            String handleResult = arg0.get("handleResult");
-            String approvers = arg0.get("approvers");
-            List<String> approverList = new ArrayList<String>();
-            if (StringUtils.isNotEmpty(approvers)) {
-                for (String approver : approvers.split(",")) {
-                    approverList.add(approver);
-                }
-            }
-            oaServer.commitTask(arg1.getUserId(), taskId, handleResult, opinion, approverList);
-
-            returnMap.put("message", "1");
+            String result = oaServer.getTaskFlowNodeInfo(arg1.getUserId(), taskId);
+            returnMap.put("result", result);
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_PROCESS_ERROR, "操作失败");

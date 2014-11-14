@@ -27,6 +27,9 @@ public class WorkflowTest extends BaseJunit4Test {
     @Resource(name = "req_committask_service")
     private BusiGateService commitTaskService;
 
+    @Resource(name = "req_flownodeget_service")
+    private BusiGateService flowNodeGetService;
+
     @Resource(name = "req_miscellaneoussubmit_service")
     private BusiGateService miscellaneousSubmitService;
 
@@ -134,6 +137,24 @@ public class WorkflowTest extends BaseJunit4Test {
             String message = (String) result.get("message");
 
             Assert.assertEquals(message, "1");
+
+        } catch (AppException e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testFlowNodeGet() {
+
+        Map params = new HashMap();
+        params.put("taskId", "0733DE31-9544-4525-824B-3C94C32D9476");
+        User loginInfo = new User();
+        loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
+        try {
+            Map result = flowNodeGetService.busi(params, loginInfo);
+
+            Assert.assertNotNull(result.get("result"));
 
         } catch (AppException e) {
             e.printStackTrace();

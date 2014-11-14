@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 提交综合事项
+ * 提交用车申请
  */
 public class CarUseSubmitServiceImp implements BusiGateService {
 

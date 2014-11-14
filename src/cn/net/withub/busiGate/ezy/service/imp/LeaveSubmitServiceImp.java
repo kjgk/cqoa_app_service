@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 提交综合事项
+ * 提交请假申请
  */
 public class LeaveSubmitServiceImp implements BusiGateService {
 
@@ -32,14 +32,12 @@ public class LeaveSubmitServiceImp implements BusiGateService {
 
             String beginDate = arg0.get("beginDate");
             String endDate = arg0.get("endDate");
-            String localCity = arg0.get("localCity");
             String description = arg0.get("description");
 
             Leave leave = new Leave();
 
             leave.setBeginDate(DateUtil.convertStringToDate(beginDate, DateUtil.STANDARD_DATE_FORMAT));    // yyyy-MM-dd
             leave.setEndDate(DateUtil.convertStringToDate(endDate, DateUtil.STANDARD_DATE_FORMAT));
-            leave.setLocalCity(Integer.parseInt(localCity));
             leave.setDescription(description);
 
             leave.setCurrentUser(new User());
