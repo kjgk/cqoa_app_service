@@ -32,7 +32,7 @@ public class TaskHandledServiceImp implements BusiGateService {
             String sql = "from vw_taskinfo a, wf_flowtype b" +
                     " where a.flowTypeId = b.objectId and a.taskStatusTag = 'Finish' and a.handler = ? and a.flowNodeType <> 'First' and b.flowTypeTag = ? ";
 
-            List list = jdbcTool.queryForList("select a.objectId objectId, a.instanceName instanceName " +
+            List list = jdbcTool.queryForList("select a.objectId objectId, a.relatedObjectId relatedObjectId, a.instanceName instanceName " +
                     ", a.flowTypeName flowTypeName, a.flowNodeName flowNodeName, a.taskStatusName taskStatusName " +
                     ", a.taskStatus taskStatus, a.organizationName organizationName, a.creatorName creatorName " +
                     ", a.taskArriveTime taskArriveTime, a.taskFinishTime taskFinishTime " +
@@ -45,7 +45,7 @@ public class TaskHandledServiceImp implements BusiGateService {
                 items.add(map);
             }
             returnMap.put("count", count.toString());
-            returnMap.put("resultMap", JSONSerializer.toJSON(items).toString());
+            returnMap.put("result", JSONSerializer.toJSON(items).toString());
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");

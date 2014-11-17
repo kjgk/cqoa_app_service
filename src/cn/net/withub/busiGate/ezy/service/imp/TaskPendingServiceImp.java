@@ -5,6 +5,7 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
+import com.withub.common.util.StringUtil;
 import net.sf.json.JSONSerializer;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class TaskPendingServiceImp implements BusiGateService {
                     " where a.flowTypeId = b.objectId and a.taskStatusTag = 'Running' and a.handler = ? and a.flowNodeType <> 'First' and b.flowTypeTag = ? ";
 
             List list = jdbcTool.queryForList("select a.objectId objectId, a.relatedObjectId relatedObjectId, a.instanceName instanceName " +
-                    ", a.flowTypeName flowTypeName, a.flowNodeName flowNodeName, a.taskStatusName taskStatusName " +
+                    ", a.flowNodeType flowNodeType, a.flowTypeName flowTypeName, a.flowNodeName flowNodeName, a.taskStatusName taskStatusName " +
                     ", a.taskStatus taskStatus, a.organizationName organizationName, a.creatorName creatorName " +
                     ", a.taskArriveTime taskArriveTime, a.taskFinishTime taskFinishTime " +
                     sql + " order by taskCreateTime desc limit ?, ?"

@@ -31,10 +31,10 @@ public class MiscellaneousSubmitServiceImp implements BusiGateService {
 
             String description = arg0.get("description");
             Miscellaneous miscellaneous = new Miscellaneous();
+            miscellaneous.setObjectId(arg0.get("objectId"));
             miscellaneous.setDescription(description);
             miscellaneous.setCurrentUser(new User());
             miscellaneous.getCurrentUser().setObjectId(arg1.getUserId());
-
             oaServer.submitMiscellaneous(miscellaneous);
 
             returnMap.put("message", "1");

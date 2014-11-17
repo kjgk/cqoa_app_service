@@ -40,7 +40,7 @@ public class OutgoingSubmitServiceImp implements BusiGateService {
             String requiredCar = arg0.get("requiredCar");
 
             Outgoing outgoing = new Outgoing();
-
+            outgoing.setObjectId(arg0.get("objectId"));
             outgoing.setBeginDate(DateUtil.convertStringToDate(beginDate, DateUtil.STANDARD_DATE_FORMAT));    // yyyy-MM-dd
             outgoing.setEndDate(DateUtil.convertStringToDate(endDate, DateUtil.STANDARD_DATE_FORMAT));
             outgoing.setLocalCity(Integer.parseInt(localCity));
@@ -49,7 +49,6 @@ public class OutgoingSubmitServiceImp implements BusiGateService {
             outgoing.setDriveRoute(driveRoute);
             outgoing.setTransportation(transportation);
             outgoing.setRequiredCar(Integer.parseInt(requiredCar));
-
             outgoing.setCurrentUser(new User());
             outgoing.getCurrentUser().setObjectId(arg1.getUserId());
 

@@ -39,7 +39,7 @@ public class TrainingSubmitServiceImp implements BusiGateService {
             String target = arg0.get("target");
 
             Training training = new Training();
-
+            training.setObjectId(arg0.get("objectId"));
             training.setBeginDate(DateUtil.convertStringToDate(beginDate, DateUtil.STANDARD_DATE_FORMAT));    // v
             training.setEndDate(DateUtil.convertStringToDate(endDate, DateUtil.STANDARD_DATE_FORMAT));
             training.setAddress(address);
@@ -47,7 +47,6 @@ public class TrainingSubmitServiceImp implements BusiGateService {
             training.setPeopleCount(Integer.parseInt(peopleCount));
             training.setTarget(target);
             training.setPublicity(publicity);
-
             training.setCurrentUser(new User());
             training.getCurrentUser().setObjectId(arg1.getUserId());
 

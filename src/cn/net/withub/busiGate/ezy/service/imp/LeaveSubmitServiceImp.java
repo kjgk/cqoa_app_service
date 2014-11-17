@@ -35,11 +35,10 @@ public class LeaveSubmitServiceImp implements BusiGateService {
             String description = arg0.get("description");
 
             Leave leave = new Leave();
-
+            leave.setObjectId(arg0.get("objectId"));
             leave.setBeginDate(DateUtil.convertStringToDate(beginDate, DateUtil.STANDARD_DATE_FORMAT));    // yyyy-MM-dd
             leave.setEndDate(DateUtil.convertStringToDate(endDate, DateUtil.STANDARD_DATE_FORMAT));
             leave.setDescription(description);
-
             leave.setCurrentUser(new User());
             leave.getCurrentUser().setObjectId(arg1.getUserId());
 
