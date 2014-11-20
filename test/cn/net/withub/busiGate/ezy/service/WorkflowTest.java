@@ -49,7 +49,7 @@ public class WorkflowTest extends BaseJunit4Test {
     public void testInstanceView() {
 
         Map params = new HashMap();
-        params.put("objectId", "0815A172-05F3-4875-9348-D80403A50733");
+        params.put("objectId", "A1A04C89-8BE6-499B-9A12-DE5173EBA2B6");
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
@@ -107,7 +107,7 @@ public class WorkflowTest extends BaseJunit4Test {
     public void testInstanceTaskLog() {
 
         Map params = new HashMap();
-        params.put("instanceId", "0815A172-05F3-4875-9348-D80403A50733");
+        params.put("instanceId", "A1A04C89-8BE6-499B-9A12-DE5173EBA2B6");
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
@@ -126,8 +126,8 @@ public class WorkflowTest extends BaseJunit4Test {
 
         Map params = new HashMap();
         params.put("taskId", "A12D989A-59EF-4285-9418-3360868EE722");
-        params.put("opinion", "È¥Íæ°É");
         params.put("approvers", "4ED21569-256E-4790-9C3B-2827B58A981B");
+        params.put("opinion", "asdfsadf");
         params.put("handleResult", "Pass");
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
@@ -166,7 +166,7 @@ public class WorkflowTest extends BaseJunit4Test {
     public void testSubmitMiscellaneous() {
 
         Map params = new HashMap();
-        params.put("description", "Íþ·çÍþ·ç");
+        params.put("description", "description");
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
