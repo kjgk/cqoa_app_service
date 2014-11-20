@@ -39,7 +39,8 @@ public class CarUseSubmitServiceImp implements BusiGateService {
             carUse.setObjectId(arg0.get("objectId"));
             carUse.setBeginTime(DateUtil.convertStringToDate(beginTime, DateUtil.STANDARD_DATEMINUTE_FORMAT));    // yyyy-MM-dd HH:mm
             carUse.setEndTime(DateUtil.convertStringToDate(endTime, DateUtil.STANDARD_DATEMINUTE_FORMAT));
-            carUse.setLocalCity(Integer.parseInt(localCity));
+            // todo
+            carUse.setRegion(Integer.parseInt(localCity));
             carUse.setDescription(description);
             carUse.setAddress(address);
             carUse.setCurrentUser(new User());

@@ -84,4 +84,13 @@
     <bean id="req_appversion_service" class="cn.net.withub.busiGate.ezy.service.imp.AppVersionServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
+
+    <bean id="req_organization_service" class="cn.net.withub.busiGate.ezy.service.imp.OrganizationServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_user_service" class="cn.net.withub.busiGate.ezy.service.imp.UserServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
 </beans>

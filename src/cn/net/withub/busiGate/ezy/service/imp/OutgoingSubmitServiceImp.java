@@ -47,7 +47,8 @@ public class OutgoingSubmitServiceImp implements BusiGateService {
             outgoing.setDescription(description);
             outgoing.setDestination(destination);
             outgoing.setDriveRoute(driveRoute);
-            outgoing.setTransportation(transportation);
+            // todo
+            outgoing.setTransportation(null);
             outgoing.setRequiredCar(Integer.parseInt(requiredCar));
             outgoing.setCurrentUser(new User());
             outgoing.getCurrentUser().setObjectId(arg1.getUserId());
