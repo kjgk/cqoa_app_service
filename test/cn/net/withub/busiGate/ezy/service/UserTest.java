@@ -13,9 +13,6 @@ import java.util.Map;
 
 public class UserTest extends BaseJunit4Test {
 
-//    @Resource(name = "req_userlist_service")
-//    private BusiGateService userListService;
-
     @Resource(name = "req_organization_service")
     private BusiGateService organizationService;
 

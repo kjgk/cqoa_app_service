@@ -36,7 +36,7 @@ public class InstanceTaskLogServiceImp implements BusiGateService {
             for (Map map : (List<Map>) list) {
                 items.add(map);
             }
-            returnMap.put("resultMap", JSONSerializer.toJSON(items).toString());
+            returnMap.put("result", JSONSerializer.toJSON(items).toString());
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");

@@ -6,15 +6,15 @@
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
-    <bean id="req_userlist_service" class="cn.net.withub.busiGate.ezy.service.imp.UserListServiceImp">
-        <property name="jdbcTool" ref="jdbcTool"/>
-    </bean>
-
     <bean id="req_taskpending_service" class="cn.net.withub.busiGate.ezy.service.imp.TaskPendingServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
     <bean id="req_taskhandled_service" class="cn.net.withub.busiGate.ezy.service.imp.TaskHandledServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+    </bean>
+
+    <bean id="req_instancelist_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceListServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
     </bean>
 
