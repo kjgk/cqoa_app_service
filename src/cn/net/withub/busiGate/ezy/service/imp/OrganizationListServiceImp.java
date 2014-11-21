@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserServiceImp implements BusiGateService {
+public class OrganizationListServiceImp implements BusiGateService {
 
     private JdbcTool jdbcTool;
 
@@ -21,11 +21,9 @@ public class UserServiceImp implements BusiGateService {
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
 
-        String organizationId = arg0.get("organizationId");
-
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
-            String result = oaServer.getUserList(organizationId);
+            String result = oaServer.getOrganizationList();
             returnMap.put("result", result);
         } catch (Exception e) {
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
