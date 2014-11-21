@@ -87,10 +87,12 @@
 
     <bean id="req_organizationlist_service" class="cn.net.withub.busiGate.ezy.service.imp.OrganizationListServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_userlist_service" class="cn.net.withub.busiGate.ezy.service.imp.UserListServiceImp">
         <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
 </beans>

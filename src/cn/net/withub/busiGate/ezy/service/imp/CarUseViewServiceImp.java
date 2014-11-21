@@ -26,7 +26,7 @@ public class CarUseViewServiceImp implements BusiGateService {
                   "SELECT sys_user.name AS proposerName, sys_organization.name AS organizationName,\n" +
                           "oa_caruse.DESCRIPTION as description,\n" +
                           "oa_caruse.BEGINTIME as beginTime, oa_caruse.ENDTIME as endTime,\n" +
-                          "oa_caruse.LOCALCITY as localCity, oa_caruse.ADDRESS as address,\n" +
+                          "oa_caruse.REGION as region, oa_caruse.ADDRESS as address,\n" +
                           "oa_caruse.CREATETIME as createTime\n" +
                           "FROM oa_caruse, sys_user, sys_organization\n" +
                           "WHERE 1=1\n" +
