@@ -23,17 +23,18 @@ public class OutgoingViewServiceImp implements BusiGateService {
         try {
 
             List<Map<String, Object>> list = jdbcTool.queryForList(
-                   "SELECT sys_user.name AS proposerName, sys_organization.name AS organizationName,\n" +
-                           "oa_outgoing.CREATETIME AS createTime, oa_outgoing.BEGINDATE as beginDate,\n" +
-                           "oa_outgoing.ENDDATE as endDate, oa_outgoing.LOCALCITY as localCity,\n" +
-                           "oa_outgoing.DESCRIPTION as description, oa_outgoing.DESTINATION as destination,\n" +
-                           "oa_outgoing.DRIVEROUTE as driverRoute, oa_outgoing.TRANSPORTATION as transportation,\n" +
-                           "oa_outgoing.REQUIREDCAR as requiredCar\n" +
-                           "FROM oa_outgoing, sys_user, sys_organization\n" +
+                   "SELECT b.name AS proposerName, c.name AS organizationName,\n" +
+                           "a.CREATETIME AS createTime, a.BEGINDATE as beginDate,\n" +
+                           "a.ENDDATE as endDate, a.LOCALCITY as localCity,\n" +
+                           "a.DESCRIPTION as description, a.DESTINATION as destination,\n" +
+                           "a.DRIVEROUTE as driverRoute, a.TRANSPORTATION as transportationId, d.name as transportation,\n" +
+                           "a.REQUIREDCAR as requiredCar\n" +
+                           "FROM oa_outgoing a, sys_user b, sys_organization c, sys_code d\n" +
                            "WHERE 1=1\n" +
-                           "AND oa_outgoing.OBJECTID = ?\n" +
-                           "AND sys_user.OBJECTID = oa_outgoing.PROPOSER\n" +
-                           "AND sys_organization.OBJECTID = sys_user.ORGANIZATIONID"
+                           "AND a.OBJECTID = ?\n" +
+                           "AND b.OBJECTID = a.PROPOSER\n" +
+                           "AND c.OBJECTID = b.ORGANIZATIONID\n" +
+                           "AND d.OBJECTID = a.TRANSPORTATION"
                     , new Object[]{arg0.get("objectId")});
             for (Map item : list) {
                 item.put("beginDate", new Date(((java.sql.Date) item.get("beginDate")).getTime()));
