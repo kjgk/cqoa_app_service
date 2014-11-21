@@ -6,10 +6,13 @@ import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.withub.common.util.DateUtil;
+import com.withub.common.util.StringUtil;
 import com.withub.model.oa.po.CarUse;
+import com.withub.model.oa.po.CarUseUser;
 import com.withub.model.system.po.User;
 import com.withub.server.OAServer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,19 +31,29 @@ public class CarUseSubmitServiceImp implements BusiGateService {
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
 
+            String users = arg0.get("users");
             String beginTime = arg0.get("beginTime");
             String endTime = arg0.get("endTime");
-            String localCity = arg0.get("localCity");
+            String region = arg0.get("region");
             String description = arg0.get("description");
             String address = arg0.get("address");
 
             CarUse carUse = new CarUse();
 
+            if (StringUtil.isNotEmpty(users)) {
+                carUse.setCarUseUserList(new ArrayList<CarUseUser>());
+                for (String userId : users.split(",")) {
+                    CarUseUser carUseUser = new CarUseUser();
+                    carUseUser.setUser(new User());
+                    carUseUser.getUser().setObjectId(userId);
+                    carUse.getCarUseUserList().add(carUseUser);
+                }
+            }
+
             carUse.setObjectId(arg0.get("objectId"));
             carUse.setBeginTime(DateUtil.convertStringToDate(beginTime, DateUtil.STANDARD_DATEMINUTE_FORMAT));    // yyyy-MM-dd HH:mm
             carUse.setEndTime(DateUtil.convertStringToDate(endTime, DateUtil.STANDARD_DATEMINUTE_FORMAT));
-            // todo
-            carUse.setRegion(Integer.parseInt(localCity));
+            carUse.setRegion(Integer.parseInt(region));
             carUse.setDescription(description);
             carUse.setAddress(address);
             carUse.setCurrentUser(new User());
