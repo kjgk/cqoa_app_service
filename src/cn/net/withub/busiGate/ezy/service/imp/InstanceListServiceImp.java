@@ -49,7 +49,7 @@ public class InstanceListServiceImp implements BusiGateService {
                 sql += " and a.result = '69F248C7-30CC-4723-A100-3DECD577FCDD'";
             }
 
-            List list = jdbcTool.queryForList("select a.objectid objectId, a.name instanceName, b.finishtime finishTime " +
+            List list = jdbcTool.queryForList("select a.objectid instanceId, a.name instanceName, a.relatedobjectid relatedObjectId, b.finishtime finishTime " +
                     sql + " order by b.finishtime desc limit ?, ?"
                     , new Object[]{arg1.getUserId(), flowType, (currentPage - 1) * pageSize, pageSize});
             Long count = jdbcTool.queryForLong("select count(1) " + sql, new Object[]{arg1.getUserId(), flowType});
