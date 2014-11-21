@@ -95,4 +95,9 @@
         <property name="oaServer" ref="oaServer"/>
     </bean>
 
+    <bean id="req_codelist_service" class="cn.net.withub.busiGate.ezy.service.imp.CodeListServiceImp">
+        <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
+    </bean>
+
 </beans>
