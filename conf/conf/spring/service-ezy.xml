@@ -15,15 +15,15 @@
     </bean>
 
     <bean id="req_instancelist_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceListServiceImp">
-        <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_instanceview_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceViewServiceImp">
-        <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_instancetasklog_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceTaskLogServiceImp">
-        <property name="jdbcTool" ref="jdbcTool"/>
+        <property name="oaServer" ref="oaServer"/>
     </bean>
 
     <bean id="req_committask_service" class="cn.net.withub.busiGate.ezy.service.imp.CommitTaskServiceImp">

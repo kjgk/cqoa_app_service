@@ -6,7 +6,7 @@ import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.exception.AppException;
 import com.withub.model.entity.query.RecordsetInfo;
 import com.withub.server.OAServer;
-import net.sf.json.JSONSerializer;
+import com.alibaba.fastjson.JSON;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class TaskPendingServiceImp implements BusiGateService {
             String flowType = arg0.get("flowType");
             RecordsetInfo recordsetInfo = oaServer.queryTask(arg1.getUserId(), flowType, "Running", currentPage, pageSize);
             returnMap.put("count", recordsetInfo.getTotalRecordCount().toString());
-            returnMap.put("result", JSONSerializer.toJSON(recordsetInfo.getEntityList()).toString());
+            returnMap.put("result", JSON.toJSON(recordsetInfo.getEntityList()).toString());
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");

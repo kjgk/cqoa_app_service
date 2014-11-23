@@ -52,7 +52,7 @@ public class WorkflowTest extends BaseJunit4Test {
     public void testInstanceView() {
 
         Map params = new HashMap();
-        params.put("objectId", "A1A04C89-8BE6-499B-9A12-DE5173EBA2B6");
+        params.put("objectId", "7DC2AF4C-F7E1-47C4-9FA6-4AC9390E0B0D");
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {

@@ -7,7 +7,7 @@ import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.withub.model.entity.query.RecordsetInfo;
 import com.withub.server.OAServer;
-import net.sf.json.JSONSerializer;
+import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public class TaskHandledServiceImp implements BusiGateService {
             String flowType = arg0.get("flowType");
             RecordsetInfo recordsetInfo = oaServer.queryTask(arg1.getUserId(), flowType, "Finish", currentPage, pageSize);
             returnMap.put("count", recordsetInfo.getTotalRecordCount().toString());
-            returnMap.put("result", JSONSerializer.toJSON(recordsetInfo.getEntityList()).toString());
+            returnMap.put("result", JSON.toJSON(recordsetInfo.getEntityList()).toString());
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
