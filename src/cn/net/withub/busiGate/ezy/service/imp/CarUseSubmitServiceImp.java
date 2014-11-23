@@ -21,8 +21,6 @@ import java.util.Map;
  */
 public class CarUseSubmitServiceImp implements BusiGateService {
 
-    private JdbcTool jdbcTool;
-
     private OAServer oaServer;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
@@ -67,10 +65,6 @@ public class CarUseSubmitServiceImp implements BusiGateService {
             throw new AppException(EzyErrorCode.EZY_PROCESS_ERROR, "²Ù×÷Ê§°Ü");
         }
         return returnMap;
-    }
-
-    public void setJdbcTool(JdbcTool jdbcTool) {
-        this.jdbcTool = jdbcTool;
     }
 
     public void setOaServer(OAServer oaServer) {

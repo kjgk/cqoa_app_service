@@ -74,7 +74,7 @@ public class WorkflowTest extends BaseJunit4Test {
         params.put("pageSize", "5");
         params.put("flowType", "Miscellaneous");
         User loginInfo = new User();
-        loginInfo.setUserId("D93BA5FD-4D70-4A01-8F66-178FAF9A29FA");
+        loginInfo.setUserId("C33BE5FC-0CCE-4C7D-817F-7497FA0A8EA6");
         try {
             Map result = taskPendingService.busi(params, loginInfo);
 
@@ -94,7 +94,7 @@ public class WorkflowTest extends BaseJunit4Test {
         params.put("pageSize", "5");
         params.put("flowType", "outgoing");
         User loginInfo = new User();
-        loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
+        loginInfo.setUserId("C33BE5FC-0CCE-4C7D-817F-7497FA0A8EA6");
         try {
             Map result = taskHandledService.busi(params, loginInfo);
 

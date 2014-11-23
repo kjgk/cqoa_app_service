@@ -13,8 +13,6 @@ import java.util.Map;
 
 public class UserListServiceImp implements BusiGateService {
 
-    private JdbcTool jdbcTool;
-
     @Autowired
     private OAServer oaServer;
 
@@ -31,10 +29,6 @@ public class UserListServiceImp implements BusiGateService {
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
         }
         return returnMap;
-    }
-
-    public void setJdbcTool(JdbcTool jdbcTool) {
-        this.jdbcTool = jdbcTool;
     }
 
     public void setOaServer(OAServer oaServer) {

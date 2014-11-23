@@ -18,8 +18,6 @@ import java.util.Map;
  */
 public class MiscellaneousSubmitServiceImp implements BusiGateService {
 
-    private JdbcTool jdbcTool;
-
     @Autowired
     private OAServer oaServer;
 
@@ -43,10 +41,6 @@ public class MiscellaneousSubmitServiceImp implements BusiGateService {
             throw new AppException(EzyErrorCode.EZY_PROCESS_ERROR, "²Ù×÷Ê§°Ü");
         }
         return returnMap;
-    }
-
-    public void setJdbcTool(JdbcTool jdbcTool) {
-        this.jdbcTool = jdbcTool;
     }
 
     public void setOaServer(OAServer oaServer) {
