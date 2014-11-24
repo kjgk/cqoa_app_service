@@ -25,9 +25,9 @@ public class InstanceListServiceImp implements BusiGateService {
             Integer pageSize = Integer.parseInt(arg0.get("pageSize"));
             currentPage = currentPage < 0 ? 1 : currentPage;
             String flowType = arg0.get("flowType");
-            String complate = arg0.get("complate");
+            String complete = arg0.get("complete");
 
-            returnMap = oaServer.queryInstance(arg1.getUserId(), flowType, complate, currentPage, pageSize);
+            returnMap = oaServer.queryInstance(arg1.getUserId(), flowType, complete, currentPage, pageSize);
 
         } catch (Exception e1) {
             e1.printStackTrace();
