@@ -23,15 +23,15 @@ public class AppVersionServiceImp implements BusiGateService {
         try {
 
             List<Map<String, Object>> list = jdbcTool.queryForList(
-                    "SELECT std_appversion.VERSION as version,\n" +
-                            "std_appversion.DESCRIPTION as description,\n" +
-                            "std_appversion.CREATETIME as createTime\n" +
-                            "FROM std_appversion\n" +
-                            "WHERE std_appversion.STATUS = 1"
+                   "SELECT std_appversion.VERSION as version, std_appversion.DESCRIPTION as description,\n" +
+                           "std_appversion.APKURL as apkUrl FROM std_appversion\n" +
+                           "WHERE std_appversion.STATUS = 1"
             );
 
+            // 若无符合的数据，则返回
+
             if (list.size() == 0) {
-                returnMap.put("result", "{}");
+                returnMap.put("result", "{\"version\":\"\",\"description\":\"\",\"apkUrl\":\"\"}");
             } else {
                 returnMap.put("result", JSONSerializer.toJSON(list.get(0)).toString());
             }
