@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OrganizationServiceImp implements BusiGateService {
-
-    private JdbcTool jdbcTool;
+public class OrganizationListServiceImp implements BusiGateService {
 
     @Autowired
     private OAServer oaServer;
@@ -29,10 +27,6 @@ public class OrganizationServiceImp implements BusiGateService {
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
         }
         return returnMap;
-    }
-
-    public void setJdbcTool(JdbcTool jdbcTool) {
-        this.jdbcTool = jdbcTool;
     }
 
     public void setOaServer(OAServer oaServer) {

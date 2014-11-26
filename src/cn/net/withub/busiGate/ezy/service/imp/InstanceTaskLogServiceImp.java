@@ -5,7 +5,8 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
-import net.sf.json.JSONSerializer;
+import com.withub.server.OAServer;
+import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,26 +18,14 @@ import java.util.Map;
  */
 public class InstanceTaskLogServiceImp implements BusiGateService {
 
-    private JdbcTool jdbcTool;
+    private OAServer oaServer;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
 
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
-
-            String sql = "from vw_instancetasklog a where a.instanceId = ?";
-
-            List list = jdbcTool.queryForList("select a.flowNodeName flowNodeName, a.handlerName handlerName " +
-                    ", a.taskHandleResultName taskHandleResultName, a.opinion opinion, a.taskFinishTime taskFinishTime " +
-                    sql + " order by taskTimeMillis"
-                    , new Object[]{arg0.get("instanceId")});
-
-            List items = new ArrayList();
-            for (Map map : (List<Map>) list) {
-                items.add(map);
-            }
-            returnMap.put("resultMap", JSONSerializer.toJSON(items).toString());
+            returnMap.put("result", oaServer.getInstanceTaskLog(arg0.get("instanceId")));
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
@@ -44,7 +33,7 @@ public class InstanceTaskLogServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setJdbcTool(JdbcTool jdbcTool) {
-        this.jdbcTool = jdbcTool;
+    public void setOaServer(OAServer oaServer) {
+        this.oaServer = oaServer;
     }
 }

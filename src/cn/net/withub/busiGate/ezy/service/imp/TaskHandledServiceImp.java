@@ -5,7 +5,9 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
-import net.sf.json.JSONSerializer;
+import com.withub.model.entity.query.RecordsetInfo;
+import com.withub.server.OAServer;
+import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +19,7 @@ import java.util.Map;
  */
 public class TaskHandledServiceImp implements BusiGateService {
 
-    private JdbcTool jdbcTool;
+    private OAServer oaServer;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -28,24 +30,9 @@ public class TaskHandledServiceImp implements BusiGateService {
             Integer pageSize = Integer.parseInt(arg0.get("pageSize"));
             currentPage = currentPage < 0 ? 1 : currentPage;
             String flowType = arg0.get("flowType");
-
-            String sql = "from vw_taskinfo a, wf_flowtype b" +
-                    " where a.flowTypeId = b.objectId and a.taskStatusTag = 'Finish' and a.handler = ? and a.flowNodeType <> 'First' and b.flowTypeTag = ? ";
-
-            List list = jdbcTool.queryForList("select a.objectId objectId, a.relatedObjectId relatedObjectId, a.instanceName instanceName " +
-                    ", a.flowTypeName flowTypeName, a.flowNodeName flowNodeName, a.taskStatusName taskStatusName " +
-                    ", a.taskStatus taskStatus, a.organizationName organizationName, a.creatorName creatorName " +
-                    ", a.taskArriveTime taskArriveTime, a.taskFinishTime taskFinishTime " +
-                    sql + " order by taskCreateTime desc limit ?, ?"
-                    , new Object[]{arg1.getUserId(), flowType, (currentPage - 1) * pageSize, pageSize});
-            Long count = jdbcTool.queryForLong("select count(1) " + sql, new Object[]{arg1.getUserId(), flowType});
-
-            List items = new ArrayList();
-            for (Map map : (List<Map>) list) {
-                items.add(map);
-            }
-            returnMap.put("count", count.toString());
-            returnMap.put("result", JSONSerializer.toJSON(items).toString());
+            RecordsetInfo recordsetInfo = oaServer.queryTask(arg1.getUserId(), flowType, "Finish", currentPage, pageSize);
+            returnMap.put("count", recordsetInfo.getTotalRecordCount().toString());
+            returnMap.put("result", JSON.toJSON(recordsetInfo.getEntityList()).toString());
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
@@ -53,7 +40,7 @@ public class TaskHandledServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setJdbcTool(JdbcTool jdbcTool) {
-        this.jdbcTool = jdbcTool;
+    public void setOaServer(OAServer oaServer) {
+        this.oaServer = oaServer;
     }
 }

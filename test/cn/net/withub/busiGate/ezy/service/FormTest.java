@@ -100,7 +100,7 @@ public class FormTest extends BaseJunit4Test {
     public void outgoingView() {
 
         Map params = new HashMap();
-        params.put("objectId", "1B66A231-F24C-4536-AFDB-CD8511EF43A8");
+        params.put("objectId", "FAD3E4A2-56AE-4F65-B791-BCD603D80C6B");
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {

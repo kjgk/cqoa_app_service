@@ -5,7 +5,7 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
-import net.sf.json.JSONSerializer;
+import com.alibaba.fastjson.JSON;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class AppVersionServiceImp implements BusiGateService {
             if (list.size() == 0) {
                 returnMap.put("result", "{\"version\":\"\",\"description\":\"\",\"apkUrl\":\"\"}");
             } else {
-                returnMap.put("result", JSONSerializer.toJSON(list.get(0)).toString());
+                returnMap.put("result", JSON.toJSON(list.get(0)).toString());
             }
         } catch (Exception e1) {
             e1.printStackTrace();

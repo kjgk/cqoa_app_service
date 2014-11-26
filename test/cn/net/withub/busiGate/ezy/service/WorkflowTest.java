@@ -24,6 +24,9 @@ public class WorkflowTest extends BaseJunit4Test {
     @Resource(name = "req_instancetasklog_service")
     private BusiGateService instanceTaskLogService;
 
+    @Resource(name = "req_instancelist_service")
+    private BusiGateService instanceListService;
+
     @Resource(name = "req_committask_service")
     private BusiGateService commitTaskService;
 
@@ -49,7 +52,7 @@ public class WorkflowTest extends BaseJunit4Test {
     public void testInstanceView() {
 
         Map params = new HashMap();
-        params.put("objectId", "A1A04C89-8BE6-499B-9A12-DE5173EBA2B6");
+        params.put("objectId", "7DC2AF4C-F7E1-47C4-9FA6-4AC9390E0B0D");
         User loginInfo = new User();
         loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
         try {
@@ -69,9 +72,9 @@ public class WorkflowTest extends BaseJunit4Test {
         Map params = new HashMap();
         params.put("currentPage", "1");
         params.put("pageSize", "5");
-        params.put("flowType", "outgoing");
+        params.put("flowType", "Miscellaneous");
         User loginInfo = new User();
-        loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
+        loginInfo.setUserId("C33BE5FC-0CCE-4C7D-817F-7497FA0A8EA6");
         try {
             Map result = taskPendingService.busi(params, loginInfo);
 
@@ -91,7 +94,7 @@ public class WorkflowTest extends BaseJunit4Test {
         params.put("pageSize", "5");
         params.put("flowType", "outgoing");
         User loginInfo = new User();
-        loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
+        loginInfo.setUserId("C33BE5FC-0CCE-4C7D-817F-7497FA0A8EA6");
         try {
             Map result = taskHandledService.busi(params, loginInfo);
 
@@ -104,16 +107,37 @@ public class WorkflowTest extends BaseJunit4Test {
     }
 
     @Test
+    public void testInstanceList() {
+
+        Map params = new HashMap();
+        params.put("currentPage", "1");
+        params.put("pageSize", "5");
+        params.put("complate", "1");
+        params.put("flowType", "Leave");
+        User loginInfo = new User();
+        loginInfo.setUserId("C33BE5FC-0CCE-4C7D-817F-7497FA0A8EA6");
+        try {
+            Map result = instanceListService.busi(params, loginInfo);
+
+            Assert.assertNotNull(result.get("result"));
+
+        } catch (AppException e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        }
+    }
+
+    @Test
     public void testInstanceTaskLog() {
 
         Map params = new HashMap();
-        params.put("instanceId", "A1A04C89-8BE6-499B-9A12-DE5173EBA2B6");
+        params.put("instanceId", "EF6CCF22-D8A6-43C4-8EAB-6ED228243053");
         User loginInfo = new User();
-        loginInfo.setUserId("053E0687-EF24-4E46-91BE-DA65A198F001");
+        loginInfo.setUserId("C33BE5FC-0CCE-4C7D-817F-7497FA0A8EA6");
         try {
             Map result = instanceTaskLogService.busi(params, loginInfo);
 
-            Assert.assertNotNull(result.get("resultMap"));
+            Assert.assertNotNull(result.get("result"));
 
         } catch (AppException e) {
             e.printStackTrace();
