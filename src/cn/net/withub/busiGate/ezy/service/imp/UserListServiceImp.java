@@ -5,7 +5,7 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import java.util.Map;
 public class UserListServiceImp implements BusiGateService {
 
     @Autowired
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -23,7 +23,7 @@ public class UserListServiceImp implements BusiGateService {
 
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
-            String result = oaServer.getUserList(organizationId);
+            String result = oaAppService.getUserList(organizationId);
             returnMap.put("result", result);
         } catch (Exception e) {
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
@@ -31,7 +31,7 @@ public class UserListServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

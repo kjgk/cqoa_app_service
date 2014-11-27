@@ -4,7 +4,7 @@ import cn.net.withub.busiGate.ezy.exceptin.EzyErrorCode;
 import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.exception.AppException;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class InstanceListServiceImp implements BusiGateService {
 
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -27,7 +27,7 @@ public class InstanceListServiceImp implements BusiGateService {
             String flowType = arg0.get("flowType");
             String complete = arg0.get("complete");
 
-            returnMap = oaServer.queryInstance(arg1.getUserId(), flowType, complete, currentPage, pageSize);
+            returnMap = oaAppService.queryInstance(arg1.getUserId(), flowType, complete, currentPage, pageSize);
 
         } catch (Exception e1) {
             e1.printStackTrace();
@@ -36,7 +36,7 @@ public class InstanceListServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

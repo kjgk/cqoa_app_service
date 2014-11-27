@@ -6,7 +6,7 @@ import cn.net.withub.busiGate.loginInfo.LoginHelper;
 import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.exception.AppException;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 import com.alibaba.fastjson.JSON;
 
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class LoginServiceImp implements BusiGateService {
 
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -22,7 +22,7 @@ public class LoginServiceImp implements BusiGateService {
         Map<String, String> resultMap = new HashMap<String, String>();
 
         try {
-            com.withub.model.system.po.User result = oaServer.login(arg0.get("username"), arg0.get("password"));
+            com.withub.model.system.po.User result = oaAppService.login(arg0.get("username"), arg0.get("password"));
             String message = "0";
             if (result != null) {
                 User user = new User();
@@ -44,7 +44,7 @@ public class LoginServiceImp implements BusiGateService {
         return resultMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

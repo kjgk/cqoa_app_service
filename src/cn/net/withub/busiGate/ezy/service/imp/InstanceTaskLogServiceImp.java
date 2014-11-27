@@ -5,7 +5,7 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
@@ -18,14 +18,14 @@ import java.util.Map;
  */
 public class InstanceTaskLogServiceImp implements BusiGateService {
 
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
 
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
-            returnMap.put("result", oaServer.getInstanceTaskLog(arg0.get("instanceId")));
+            returnMap.put("result", oaAppService.getInstanceTaskLog(arg0.get("instanceId")));
         } catch (Exception e1) {
             e1.printStackTrace();
             throw new AppException(EzyErrorCode.EZY_QUERY_ERROR, "≤È—Ø ß∞‹");
@@ -33,7 +33,7 @@ public class InstanceTaskLogServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

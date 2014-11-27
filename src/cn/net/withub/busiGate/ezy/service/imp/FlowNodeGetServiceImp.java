@@ -3,9 +3,8 @@ package cn.net.withub.busiGate.ezy.service.imp;
 import cn.net.withub.busiGate.ezy.exceptin.EzyErrorCode;
 import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
-import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
@@ -17,7 +16,7 @@ import java.util.Map;
 public class FlowNodeGetServiceImp implements BusiGateService {
 
     @Autowired
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -25,7 +24,7 @@ public class FlowNodeGetServiceImp implements BusiGateService {
         Map<String, String> returnMap = new HashMap<String, String>();
         try {
             String taskId = arg0.get("taskId");
-            String result = oaServer.getTaskFlowNodeInfo(arg1.getUserId(), taskId);
+            String result = oaAppService.getTaskFlowNodeInfo(arg1.getUserId(), taskId);
             returnMap.put("result", result);
         } catch (Exception e1) {
             e1.printStackTrace();
@@ -34,7 +33,7 @@ public class FlowNodeGetServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

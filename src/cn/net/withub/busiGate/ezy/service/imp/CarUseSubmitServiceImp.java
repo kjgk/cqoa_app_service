@@ -3,14 +3,13 @@ package cn.net.withub.busiGate.ezy.service.imp;
 import cn.net.withub.busiGate.ezy.exceptin.EzyErrorCode;
 import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
-import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.withub.common.util.DateUtil;
 import com.withub.common.util.StringUtil;
 import com.withub.model.oa.po.CarUse;
 import com.withub.model.oa.po.CarUseUser;
 import com.withub.model.system.po.User;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ import java.util.Map;
  */
 public class CarUseSubmitServiceImp implements BusiGateService {
 
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -57,7 +56,7 @@ public class CarUseSubmitServiceImp implements BusiGateService {
             carUse.setCurrentUser(new User());
             carUse.getCurrentUser().setObjectId(arg1.getUserId());
 
-            oaServer.submitCarUse(carUse);
+            oaAppService.submitCarUse(carUse);
 
             returnMap.put("message", "1");
         } catch (Exception e1) {
@@ -67,7 +66,7 @@ public class CarUseSubmitServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

@@ -3,75 +3,75 @@
 
 <beans>
     <bean id="req_login_service" class="cn.net.withub.busiGate.ezy.service.imp.LoginServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_taskpending_service" class="cn.net.withub.busiGate.ezy.service.imp.TaskPendingServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_taskhandled_service" class="cn.net.withub.busiGate.ezy.service.imp.TaskHandledServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_instancelist_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceListServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_instanceview_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceViewServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_instancetasklog_service" class="cn.net.withub.busiGate.ezy.service.imp.InstanceTaskLogServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_committask_service" class="cn.net.withub.busiGate.ezy.service.imp.CommitTaskServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_flownodeget_service" class="cn.net.withub.busiGate.ezy.service.imp.FlowNodeGetServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_miscellaneousview_service" class="cn.net.withub.busiGate.ezy.service.imp.MiscellaneousViewServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_trainingview_service" class="cn.net.withub.busiGate.ezy.service.imp.TrainingViewServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_leaveview_service" class="cn.net.withub.busiGate.ezy.service.imp.LeaveViewServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_outgoingview_service" class="cn.net.withub.busiGate.ezy.service.imp.OutgoingViewServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_caruseview_service" class="cn.net.withub.busiGate.ezy.service.imp.CarUseViewServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_miscellaneoussubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.MiscellaneousSubmitServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_outgoingsubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.OutgoingSubmitServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_leavesubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.LeaveSubmitServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_trainingsubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.TrainingSubmitServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_carusesubmit_service" class="cn.net.withub.busiGate.ezy.service.imp.CarUseSubmitServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_appversion_service" class="cn.net.withub.busiGate.ezy.service.imp.AppVersionServiceImp">
@@ -79,15 +79,15 @@
     </bean>
 
     <bean id="req_organizationlist_service" class="cn.net.withub.busiGate.ezy.service.imp.OrganizationListServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_userlist_service" class="cn.net.withub.busiGate.ezy.service.imp.UserListServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
     <bean id="req_codelist_service" class="cn.net.withub.busiGate.ezy.service.imp.CodeListServiceImp">
-        <property name="oaServer" ref="oaServer"/>
+        <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
 </beans>

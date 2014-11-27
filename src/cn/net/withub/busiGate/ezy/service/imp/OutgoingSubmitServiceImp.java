@@ -11,7 +11,7 @@ import com.withub.model.oa.po.Outgoing;
 import com.withub.model.oa.po.OutgoingUser;
 import com.withub.model.system.po.Code;
 import com.withub.model.system.po.User;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class OutgoingSubmitServiceImp implements BusiGateService {
 
     @Autowired
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -65,7 +65,7 @@ public class OutgoingSubmitServiceImp implements BusiGateService {
             outgoing.setCurrentUser(new User());
             outgoing.getCurrentUser().setObjectId(arg1.getUserId());
 
-            oaServer.submitOutgoing(outgoing);
+            oaAppService.submitOutgoing(outgoing);
 
             returnMap.put("message", "1");
         } catch (Exception e1) {
@@ -75,7 +75,7 @@ public class OutgoingSubmitServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

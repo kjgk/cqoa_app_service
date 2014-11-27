@@ -5,7 +5,7 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,7 +20,7 @@ import java.util.Map;
 public class CommitTaskServiceImp implements BusiGateService {
 
     @Autowired
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -38,7 +38,7 @@ public class CommitTaskServiceImp implements BusiGateService {
                     approverList.add(approver);
                 }
             }
-            oaServer.commitTask(arg1.getUserId(), taskId, handleResult, opinion, approverList);
+            oaAppService.commitTask(arg1.getUserId(), taskId, handleResult, opinion, approverList);
 
             returnMap.put("message", "1");
         } catch (Exception e1) {
@@ -48,7 +48,7 @@ public class CommitTaskServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

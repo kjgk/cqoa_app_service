@@ -7,7 +7,6 @@ import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.alibaba.fastjson.JSON;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,9 +22,9 @@ public class AppVersionServiceImp implements BusiGateService {
         try {
 
             List<Map<String, Object>> list = jdbcTool.queryForList(
-                   "SELECT std_appversion.VERSION as version, std_appversion.DESCRIPTION as description,\n" +
-                           "std_appversion.APKURL as apkUrl FROM std_appversion\n" +
-                           "WHERE std_appversion.STATUS = 1"
+                    "SELECT std_appversion.VERSION as version, std_appversion.DESCRIPTION as description,\n" +
+                            "std_appversion.APKURL as apkUrl FROM std_appversion\n" +
+                            "WHERE std_appversion.STATUS = 1"
             );
 
             // 若无符合的数据，则返回

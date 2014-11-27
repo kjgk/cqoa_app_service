@@ -8,7 +8,7 @@ import cn.net.withub.util.exception.AppException;
 import com.withub.common.util.DateUtil;
 import com.withub.model.oa.po.Training;
 import com.withub.model.system.po.User;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class TrainingSubmitServiceImp implements BusiGateService {
 
     @Autowired
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -48,7 +48,7 @@ public class TrainingSubmitServiceImp implements BusiGateService {
             training.setCurrentUser(new User());
             training.getCurrentUser().setObjectId(arg1.getUserId());
 
-            oaServer.submitTraining(training);
+            oaAppService.submitTraining(training);
 
             returnMap.put("message", "1");
         } catch (Exception e1) {
@@ -58,7 +58,7 @@ public class TrainingSubmitServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }

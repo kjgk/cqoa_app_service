@@ -7,7 +7,7 @@ import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.withub.model.oa.po.Miscellaneous;
 import com.withub.model.system.po.User;
-import com.withub.server.OAServer;
+import com.withub.service.oa.OaAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class MiscellaneousSubmitServiceImp implements BusiGateService {
 
     @Autowired
-    private OAServer oaServer;
+    private OaAppService oaAppService;
 
     public Map<String, String> busi(Map<String, String> arg0, LoginInfo arg1)
             throws AppException {
@@ -33,7 +33,7 @@ public class MiscellaneousSubmitServiceImp implements BusiGateService {
             miscellaneous.setDescription(description);
             miscellaneous.setCurrentUser(new User());
             miscellaneous.getCurrentUser().setObjectId(arg1.getUserId());
-            oaServer.submitMiscellaneous(miscellaneous);
+            oaAppService.submitMiscellaneous(miscellaneous);
 
             returnMap.put("message", "1");
         } catch (Exception e1) {
@@ -43,7 +43,7 @@ public class MiscellaneousSubmitServiceImp implements BusiGateService {
         return returnMap;
     }
 
-    public void setOaServer(OAServer oaServer) {
-        this.oaServer = oaServer;
+    public void setOaAppService(OaAppService oaAppService) {
+        this.oaAppService = oaAppService;
     }
 }
