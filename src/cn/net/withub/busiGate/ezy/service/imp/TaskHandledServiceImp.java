@@ -30,7 +30,7 @@ public class TaskHandledServiceImp implements BusiGateService {
             Integer pageSize = Integer.parseInt(arg0.get("pageSize"));
             currentPage = currentPage < 0 ? 1 : currentPage;
             String flowType = arg0.get("flowType");
-            RecordsetInfo recordsetInfo = oaAppService.queryTask(arg1.getUserId(), flowType, "Finish", currentPage, pageSize);
+            RecordsetInfo recordsetInfo = oaAppService.listTask(arg1.getUserId(), flowType, "Finish", currentPage, pageSize);
             returnMap.put("count", recordsetInfo.getTotalRecordCount().toString());
             returnMap.put("result", JSON.toJSON(recordsetInfo.getEntityList()).toString());
         } catch (Exception e1) {

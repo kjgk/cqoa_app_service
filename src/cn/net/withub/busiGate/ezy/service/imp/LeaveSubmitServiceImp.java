@@ -6,6 +6,7 @@ import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.withub.common.util.DateUtil;
+import com.withub.common.util.StringUtil;
 import com.withub.model.oa.po.Leave;
 import com.withub.model.system.po.User;
 import com.withub.service.oa.OaAppService;
@@ -31,6 +32,7 @@ public class LeaveSubmitServiceImp implements BusiGateService {
             String beginDate = arg0.get("beginDate");
             String endDate = arg0.get("endDate");
             String description = arg0.get("description");
+            String approver = arg0.get("approver");
 
             Leave leave = new Leave();
             leave.setObjectId(arg0.get("objectId"));
@@ -39,6 +41,10 @@ public class LeaveSubmitServiceImp implements BusiGateService {
             leave.setDescription(description);
             leave.setCurrentUser(new User());
             leave.getCurrentUser().setObjectId(arg1.getUserId());
+            if (StringUtil.isNotEmpty(approver)) {
+                leave.setApprover(new User());
+                leave.getApprover().setObjectId(approver);
+            }
 
             oaAppService.submitLeave(leave);
 

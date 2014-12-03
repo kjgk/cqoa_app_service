@@ -27,7 +27,7 @@ public class InstanceListServiceImp implements BusiGateService {
             String flowType = arg0.get("flowType");
             String complete = arg0.get("complete");
 
-            returnMap = oaAppService.queryInstance(arg1.getUserId(), flowType, complete, currentPage, pageSize);
+            returnMap = oaAppService.listInstance(arg1.getUserId(), flowType, complete, currentPage, pageSize);
 
         } catch (Exception e1) {
             e1.printStackTrace();

@@ -34,6 +34,7 @@ public class CarUseSubmitServiceImp implements BusiGateService {
             String region = arg0.get("region");
             String description = arg0.get("description");
             String address = arg0.get("address");
+            String approver = arg0.get("approver");
 
             CarUse carUse = new CarUse();
 
@@ -55,6 +56,10 @@ public class CarUseSubmitServiceImp implements BusiGateService {
             carUse.setAddress(address);
             carUse.setCurrentUser(new User());
             carUse.getCurrentUser().setObjectId(arg1.getUserId());
+            if (StringUtil.isNotEmpty(approver)) {
+                carUse.setApprover(new User());
+                carUse.getApprover().setObjectId(approver);
+            }
 
             oaAppService.submitCarUse(carUse);
 

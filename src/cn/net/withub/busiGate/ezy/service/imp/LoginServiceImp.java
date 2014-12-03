@@ -28,6 +28,8 @@ public class LoginServiceImp implements BusiGateService {
                 User user = new User();
                 user.setUserId(result.getObjectId());
                 user.setUsername(result.getName());
+                user.setRoleTag(result.getRole().getRoleTag());
+                user.setOrganizationCode(result.getOrganization().getCode());
                 user.setLoginName(arg0.get("username"));
                 user.setLoginBusiType("");
                 user.setFydm("");
@@ -39,7 +41,7 @@ public class LoginServiceImp implements BusiGateService {
             resultMap.put("message", message);
         } catch (Exception e1) {
             e1.printStackTrace();
-            throw new AppException(EzyErrorCode.EZY_LOGIN_ERROR, "µÇÂ¼Ê§°Ü");
+            throw new AppException(EzyErrorCode.EZY_LOGIN_ERROR, "ï¿½ï¿½Â¼Ê§ï¿½ï¿½");
         }
         return resultMap;
     }

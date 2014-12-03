@@ -5,6 +5,7 @@ import cn.net.withub.busiGate.loginInfo.LoginInfo;
 import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
+import com.withub.common.util.StringUtil;
 import com.withub.model.oa.po.Miscellaneous;
 import com.withub.model.system.po.User;
 import com.withub.service.oa.OaAppService;
@@ -28,11 +29,18 @@ public class MiscellaneousSubmitServiceImp implements BusiGateService {
         try {
 
             String description = arg0.get("description");
+            String approver = arg0.get("approver");
+
             Miscellaneous miscellaneous = new Miscellaneous();
             miscellaneous.setObjectId(arg0.get("objectId"));
             miscellaneous.setDescription(description);
             miscellaneous.setCurrentUser(new User());
             miscellaneous.getCurrentUser().setObjectId(arg1.getUserId());
+            if (StringUtil.isNotEmpty(approver)) {
+                miscellaneous.setApprover(new User());
+                miscellaneous.getApprover().setObjectId(approver);
+            }
+
             oaAppService.submitMiscellaneous(miscellaneous);
 
             returnMap.put("message", "1");

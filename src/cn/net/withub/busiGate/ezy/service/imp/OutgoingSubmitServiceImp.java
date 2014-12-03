@@ -41,6 +41,7 @@ public class OutgoingSubmitServiceImp implements BusiGateService {
             String driveRoute = arg0.get("driveRoute");
             String transportation = arg0.get("transportation");
             String requiredCar = arg0.get("requiredCar");
+            String approver = arg0.get("approver");
 
             Outgoing outgoing = new Outgoing();
             if (StringUtil.isNotEmpty(users)) {
@@ -64,6 +65,10 @@ public class OutgoingSubmitServiceImp implements BusiGateService {
             outgoing.setRequiredCar(Integer.parseInt(requiredCar));
             outgoing.setCurrentUser(new User());
             outgoing.getCurrentUser().setObjectId(arg1.getUserId());
+            if (StringUtil.isNotEmpty(approver)) {
+                outgoing.setApprover(new User());
+                outgoing.getApprover().setObjectId(approver);
+            }
 
             oaAppService.submitOutgoing(outgoing);
 

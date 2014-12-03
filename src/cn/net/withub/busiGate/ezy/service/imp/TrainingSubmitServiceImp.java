@@ -6,6 +6,7 @@ import cn.net.withub.busiGate.service.BusiGateService;
 import cn.net.withub.util.dao.JdbcTool;
 import cn.net.withub.util.exception.AppException;
 import com.withub.common.util.DateUtil;
+import com.withub.common.util.StringUtil;
 import com.withub.model.oa.po.Training;
 import com.withub.model.system.po.User;
 import com.withub.service.oa.OaAppService;
@@ -35,6 +36,8 @@ public class TrainingSubmitServiceImp implements BusiGateService {
             String peopleCount = arg0.get("peopleCount");
             String publicity = arg0.get("publicity");
             String target = arg0.get("target");
+            String approver = arg0.get("approver");
+            String trainingType = arg0.get("trainingType");
 
             Training training = new Training();
             training.setObjectId(arg0.get("objectId"));
@@ -45,8 +48,13 @@ public class TrainingSubmitServiceImp implements BusiGateService {
             training.setPeopleCount(Integer.parseInt(peopleCount));
             training.setTarget(target);
             training.setPublicity(publicity);
+            training.setTrainingType(Integer.parseInt(trainingType));
             training.setCurrentUser(new User());
             training.getCurrentUser().setObjectId(arg1.getUserId());
+            if (StringUtil.isNotEmpty(approver)) {
+                training.setApprover(new User());
+                training.getApprover().setObjectId(approver);
+            }
 
             oaAppService.submitTraining(training);
 
