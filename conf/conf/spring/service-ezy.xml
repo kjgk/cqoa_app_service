@@ -90,6 +90,10 @@
         <property name="oaAppService" ref="oaAppService"/>
     </bean>
 
+    <bean id="req_managerlistall_service" class="cn.net.withub.busiGate.ezy.service.imp.ManagerListAllServiceImp">
+        <property name="oaAppService" ref="oaAppService"/>
+    </bean>
+
     <bean id="req_leaderlist_service" class="cn.net.withub.busiGate.ezy.service.imp.LeaderListServiceImp">
         <property name="oaAppService" ref="oaAppService"/>
     </bean>

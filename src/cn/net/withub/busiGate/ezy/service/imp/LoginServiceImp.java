@@ -41,7 +41,7 @@ public class LoginServiceImp implements BusiGateService {
             resultMap.put("message", message);
         } catch (Exception e1) {
             e1.printStackTrace();
-            throw new AppException(EzyErrorCode.EZY_LOGIN_ERROR, "��¼ʧ��");
+            throw new AppException(EzyErrorCode.EZY_LOGIN_ERROR, "登录失败");
         }
         return resultMap;
     }
